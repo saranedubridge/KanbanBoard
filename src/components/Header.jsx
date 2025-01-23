@@ -23,6 +23,10 @@ function Header({ setIsBoardModalOpen, isBoardModalOpen }) {
   const boards = useSelector((state) => state.boards);
   const board = boards.find((board) => board.isActive);
 
+  if (!board) {
+    return <p>No active board found. Please create a new board.</p>;
+  }
+
   const onDropdownClick = () => {
     setOpenDropdown((state) => !state);
     setIsElipsisMenuOpen(false);
